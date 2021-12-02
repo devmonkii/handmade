@@ -1,13 +1,22 @@
 #include <windows.h>
 
-INT WINAPI WinMain(
-	HINSTANCE hInstance,
-	HINSTANCE hPrevInstance,
-	PSTR lpCmdLine,
- 	INT nCmdShow) 
-{
-	MessageBox(0, "This is handmade hero", "Handmade Hero", HB_OK | MB_ICONERROR);
-	retun 0;
+
+LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LParam) {
+	
 }
 
+INT WINAPI WinMain(
+	HINSTANCE Instance,
+	HINSTANCE PrevInstance,
+	PSTR CommandLine,
+ 	INT ShowCode) {
+	
+	WNDCLASS WindowClass = {};
 
+	WindowClass.style         = CS_OWNDC|CS_HREDRAW|CS_VREDRAW;
+	WindowClass.lpfnWndProc   = *MainWindowCallback;
+	WindowClass.hInstance     = Instance;
+	WindowClass.lpszClassName = "HandmadeHeroWindowClass"
+
+	retun 0;
+}
