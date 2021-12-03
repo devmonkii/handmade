@@ -29,7 +29,7 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 			HDC DeviceContext = BeginPaint(Window, &Paint);
 
 			INT X       = Paint.rcPaint.left;
-			INT Y       = Paint.rcPaint.right;
+			INT Y       = Paint.rcPaint.top;
 			LONG Height = Paint.rcPaint.bottom - Paint.rcPaint.top;
 			LONG Width  =  Paint.rcPaint.right - Paint.rcPaint.left;
 
