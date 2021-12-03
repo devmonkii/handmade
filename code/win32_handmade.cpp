@@ -26,7 +26,7 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 		case WM_PAINT: {
 			
 			PAINTSTRUCT Paint;			
-			HDC DeviceContext = BeginPaint(Window, &Paint)
+			HDC DeviceContext = BeginPaint(Window, &Paint);
 
 			INT X       = Paint.rcPaint.left;
 			INT Y       = Paint.rcPaint.right;
@@ -40,9 +40,6 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 			} else {
 				COLOR_TO_USE = WHITENESS;
 			}
-			
-				
-			
 
 			EndPaint(Window, &Paint);
 		}
@@ -53,7 +50,7 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 		break;
 	}
 
-	retun Result;
+	return Result;
 }
 
 INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CommandLine, INT ShowCode) {
@@ -63,7 +60,7 @@ INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CommandLine,
 	WindowClass.style         = CS_OWNDC|CS_HREDRAW|CS_VREDRAW;
 	WindowClass.lpfnWndProc   = &MainWindowCallback;
 	WindowClass.hInstance     = Instance;
-	WindowClass.lpszClassName = "HandmadeHeroWindowClass"
+	WindowClass.lpszClassName = "HandmadeHeroWindowClass";
 
 	RegisterClass(&WindowClass);
 	
@@ -92,5 +89,5 @@ INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CommandLine,
 			}
 		}
 	}
-	retun 0;
+	return 0;
 }
