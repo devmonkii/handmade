@@ -5,16 +5,16 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 	LRESULT Result = 0;
 
 	switch(Message) {
-		case WN_SIZE: {
-			OutputDebugStringA("WN_SIZE\n")
+		case WM_SIZE: {
+			OutputDebugStringA("WM_SIZE\n")
 		}
 		break;
-		case WN_DESTROY: {
-			OutputDebugStringA("WN_DESTROY\n")
+		case WM_DESTROY: {
+			OutputDebugStringA("WM_DESTROY\n")
 		}
 		break;
-		case WN_CLOSE: {
-			OutputDebugStringA("WN_CLOSE\n")
+		case WM_CLOSE: {
+			OutputDebugStringA("WM_CLOSE\n")
 
 		}
 		break;
