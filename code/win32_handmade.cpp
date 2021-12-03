@@ -7,22 +7,22 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 	switch(Message) {
 		case WM_SIZE: {
 			OutputDebugStringA("WM_SIZE\n")
-		}
-		break;
+		} break;
+		
 		case WM_DESTROY: {
 			OutputDebugStringA("WM_DESTROY\n")
-		}
-		break;
+		} break;
+		
 		case WM_CLOSE: {
 			OutputDebugStringA("WM_CLOSE\n")
 
-		}
-		break;
+		} break;
+		
 		case WM_ACTIVATEAPP: {
 			OutputDebugStringA("WM_ACTIVATEAPP\n")
 
-		}
-		break;
+		} break;
+		
 		case WM_PAINT: {
 			
 			PAINTSTRUCT Paint;			
