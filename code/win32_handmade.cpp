@@ -6,23 +6,23 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 
 	switch(Message) {
 		case WM_SIZE: {
-			OutputDebugStringA("WM_SIZE\n")
-		} break;
-		
+			OutputDebugStringA("WM_SIZE\n");
+		}
+		break;
 		case WM_DESTROY: {
-			OutputDebugStringA("WM_DESTROY\n")
-		} break;
-		
+			OutputDebugStringA("WM_DESTROY\n");
+		}
+		break;
 		case WM_CLOSE: {
-			OutputDebugStringA("WM_CLOSE\n")
+			OutputDebugStringA("WM_CLOSE\n");
 
-		} break;
-		
+		}
+		break;
 		case WM_ACTIVATEAPP: {
-			OutputDebugStringA("WM_ACTIVATEAPP\n")
+			OutputDebugStringA("WM_ACTIVATEAPP\n");
 
-		} break;
-		
+		}
+		break;
 		case WM_PAINT: {
 			
 			PAINTSTRUCT Paint;			
@@ -34,7 +34,7 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 			LONG Width  =  Paint.rcPaint.right - Paint.rcPaint.left;
 
 			static DWORD COLOR_TO_USE = WHITENESS;
-			PatBlt(DeviceContext, X, Y, Width, Height, COLOR_TO_USE)
+			PatBlt(DeviceContext, X, Y, Width, Height, COLOR_TO_USE);
 			if(COLOR_TO_USE == WHITENESS) {
 				COLOR_TO_USE = BLACKNESS;
 			} else {
@@ -47,7 +47,7 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 			EndPaint(Window, &Paint);
 		}
 		default: {
-			OutputDebugStringA("DEFAULT\n")
+			OutputDebugStringA("DEFAULT\n");
 			Result = DefWindowProc(Window, Message, WParam, LParam);
 		}
 		break;
@@ -65,7 +65,7 @@ INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CommandLine,
 	WindowClass.hInstance     = Instance;
 	WindowClass.lpszClassName = "HandmadeHeroWindowClass"
 
-	RegisterClass(&WindowClass)
+	RegisterClass(&WindowClass);
 	
 	HWND WindowHandle = CreateWindowEx(
 		0,
@@ -84,7 +84,7 @@ INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CommandLine,
 	if(WindowHandle) {
 		for(;;) {
 			MSG Message;
-			BOOL MessageResult = GetMessage(&Message, 0, 0, 0,0 )
+			BOOL MessageResult = GetMessage(&Message, 0, 0, 0);
 			if(MessageResult > 0) {
 
 			} else {
