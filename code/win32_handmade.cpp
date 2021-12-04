@@ -1,5 +1,11 @@
 #include <windows.h>
 
+#define internal static;
+#define local_persist static;
+#define global_variable static;
+
+// TODO(daniel): This is a global for now
+global_variable bool Running;
 
 LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LPARAM LParam) {
 	LRESULT Result = 0;
@@ -10,13 +16,13 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 		}
 		break;
 		case WM_DESTROY: {
-			OutputDebugStringA("WM_DESTROY\n");
+			// TODO(daniel): Handle this with as an error - recreate window?
+			Running = false;
 		}
 		break;
 		case WM_CLOSE: {
-			PostQuitMessage(0);
-			OutputDebugStringA("WM_CLOSE\n");
-
+			// TODO(daniel): Handle this with a message to the user?
+			Running = false;
 		}
 		break;
 		case WM_ACTIVATEAPP: {
@@ -32,9 +38,9 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 			INT X       = Paint.rcPaint.left;
 			INT Y       = Paint.rcPaint.top;
 			LONG Height = Paint.rcPaint.bottom - Paint.rcPaint.top;
-			LONG Width  =  Paint.rcPaint.right - Paint.rcPaint.left;
+			LONG Width  = Paint.rcPaint.right - Paint.rcPaint.left;
 
-			static DWORD COLOR_TO_USE = WHITENESS;
+			local_persist DWORD COLOR_TO_USE = WHITENESS;
 			PatBlt(DeviceContext, X, Y, Width, Height, COLOR_TO_USE);
 			if(COLOR_TO_USE == WHITENESS) {
 				COLOR_TO_USE = BLACKNESS;
@@ -80,14 +86,14 @@ INT WINAPI WinMain(HINSTANCE Instance, HINSTANCE PrevInstance, PSTR CommandLine,
 		0);
 
 	if(WindowHandle) {
-		for(;;) {
+		Running = true;
+
+		while(Running) {
 			MSG Message;
 			BOOL MessageResult = GetMessage(&Message, 0, 0, 0);
 			if(MessageResult > 0) {
 				TranslateMessage(&Message);
 				DispatchMessage(&Message);
-			} else {
-				break;
 			}
 		}
 	}
